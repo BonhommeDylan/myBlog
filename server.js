@@ -4,6 +4,7 @@ const Article = require('./models/article')
 const articleRouter = require('./routes/articles')
 const methodOverride = require('method-override')
 const app = express()
+const port = 8000
 
 var mongoDB = "mongodb+srv://dbUser:s3046971@cluster0.kjgef.mongodb.net/myBlog?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
@@ -22,6 +23,6 @@ app.get('/', async (req, res) => {
 
 app.use('/articles', articleRouter)
 
-app.listen(5000)
-
-console.log('Express server listening on port 5000');
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}!`)
+});
